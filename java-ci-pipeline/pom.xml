@@ -9,13 +9,23 @@
  <properties>
  <maven.compiler.source>17</maven.compiler.source>
  <maven.compiler.target>17</maven.compiler.target>
- <junit.version>5.9.3</junit.version>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
  </properties>
+<dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.junit</groupId>
+        <artifactId>junit-bom</artifactId>
+        <version>5.9.3</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
  <dependencies>
  <dependency>
  <groupId>org.junit.jupiter</groupId>
  <artifactId>junit-jupiter</artifactId>
- <version>${junit.version}</version>
  <scope>test</scope>
  </dependency>
  </dependencies>
@@ -24,7 +34,7 @@
  <plugin>
  <groupId>org.apache.maven.plugins</groupId>
  <artifactId>maven-surefire-plugin</artifactId>
- <version>3.0.0</version>
+ <version>3.0.0-M9</version>
  </plugin>
  </plugins>
  </build>
