@@ -13,21 +13,26 @@ pipeline {
  }
  stage('Build') {
  steps {
+  dir('java-ci-pipeline'){
  bat 'mvn clean compile'
+  }
  }
  }
  stage('Test') {
  steps {
+  dir('java-ci-pipeline'){
  bat 'mvn test'
+ }
  }
  post {
  always {
- junit '**/target/surefire-reports/*.xml'
+ junit 'java-ci-pipeline/target/surefire-reports/*.xml'
  }
  }
  }
  stage('Package') {
  steps {
+  dir('java-ci-pipeline'){
  bat 'mvn package'
  }
  }
@@ -41,5 +46,6 @@ pipeline {
  }
  }
 }
+
 
 
